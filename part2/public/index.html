@@ -60,11 +60,11 @@
           const result = await response.json();
 
           if (response.ok) {
-            // ✅ Store login info in sessionStorage
+            // Store login info in sessionStorage
             sessionStorage.setItem('username', this.username);
             sessionStorage.setItem('role', result.role);
 
-            // Redirect to appropriate dashboard
+            // Change window to dashboard
             if (result.role === 'owner') {
               window.location.href = 'owner-dashboard.html';
             } else if (result.role === 'walker') {
