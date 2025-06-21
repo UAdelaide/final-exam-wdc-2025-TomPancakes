@@ -132,18 +132,18 @@
     }).mount('#app');
 
     function logout() {
-  // Clear sessionStorage
-  sessionStorage.clear();
+      // Clear sessionStorage
+      sessionStorage.clear();
 
-  // Clear all cookies for this domain
-  document.cookie.split(";").forEach(cookie => {
-    document.cookie = cookie.replace(/^ +/, "")
-      .replace(/=.*/, "=;expires=" + new Date(0).toUTCString() + ";path=/");
-  });
+      // Clear all cookies for this domain
+      document.cookie.split(";").forEach(cookie => {
+        document.cookie = cookie.replace(/^ +/, "")
+          .replace(/=.*/, "=;expires=" + new Date(0).toUTCString() + ";path=/");
+      });
 
-  // Redirect to login page
-  window.location.href = 'index.html';
-}
+      // Redirect to login page
+      window.location.href = 'index.html';
+  }
 
   </script>
 
