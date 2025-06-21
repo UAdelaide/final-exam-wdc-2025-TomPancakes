@@ -32,16 +32,56 @@
     </form>
 
   <script>
-    const { createApp } = Vue;
-    createApp({
-      data() {
-        return {
-          message: 'Welcome to the Dog Walking Service!'
-        };
-      }
-    }).mount('#app');
+      const { createApp } = Vue;
+  createApp({
+    data() {
+      return {
+        username: '',
+        password: '',
+        error: ''
+      };
+    },
+    methods: {
+      async login() {
+        this.error = '';
+        try {
+          const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              username: this.username,
+              password: this.password
+            })
+          });
 
-    
+          const result = await response.json();
+
+          if (response.ok) {
+            // ✅ Store login info in sessionStorage
+            sessionStorage.setItem('username', this.username);
+            sessionStorage.setItem('role', result.role);
+
+            // Redirect to appropriate dashboard
+            if (result.role === 'owner') {
+              window.location.href = 'owner-dashboard.html';
+            } else if (result.role === 'walker') {
+              window.location.href = 'walker-dashboard.html';
+            } else {
+              this.error = 'Unknown role.';
+            }
+          } else {
+            this.error = result.message || 'Login failed.';
+          }
+        } catch (e) {
+          this.error = 'Error connecting to server.';
+        }
+      }
+    }
+  }).mount('#app');
+
+
 
   </script>
 
