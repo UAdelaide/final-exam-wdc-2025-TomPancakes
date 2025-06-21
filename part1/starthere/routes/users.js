@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-
+// return list of dogs
 app.get('/api/dogs', async (req, res) => {
     try {
       const [rows] = await connection.execute(
@@ -22,7 +22,7 @@ app.get('/api/dogs', async (req, res) => {
     }
   });
 
-
+// return walk requests
   app.get('/api/walkrequests/open', async (req, res) => {
     try {
       const [rows] = await connection.execute(
@@ -37,3 +37,5 @@ app.get('/api/dogs', async (req, res) => {
       res.status(500).json({ error: 'Failed to fetch open walk requests' });
     }
   });
+
+//return summary of each walker
