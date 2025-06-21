@@ -7,16 +7,16 @@ a {
   color: #00B7FF;
 }
 
-    body {
-      background: radial-gradient(circle, red, yellow, lime, cyan);
-      color: black;
-      font-family: Comic Sans MS;
-      font-size: 20px;
-    }
+body {
+    background: radial-gradient(circle, red, yellow, lime, cyan);
+    color: black;
+    font-family: Comic Sans MS;
+    font-size: 20px;
+}
 
-    .dog-img {
-      width: 100%;
-      border: 10px dashed purple;
+.dog-img {
+  width: 100%;
+  border: 10px dashed purple;
       animation: spin 4s infinite linear;
     }
 
